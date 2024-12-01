@@ -1,0 +1,448 @@
+options:
+  parameters:
+    author: ''
+    catch_exceptions: 'True'
+    category: Custom
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: interface to DTTSP
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: no_gui
+    hier_block_src_path: '.:'
+    id: pluto_dttsp_rxtx_udp
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: run
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: Pluto SDR Transceiver
+    window_size: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: frequency
+  id: variable
+  parameters:
+    comment: ''
+    value: '144390000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [400, 12]
+    rotation: 0
+    state: enabled
+- name: gain
+  id: variable
+  parameters:
+    comment: ''
+    value: '22'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [504, 12]
+    rotation: 0
+    state: enabled
+- name: output_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '192000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [304, 12]
+    rotation: 0
+    state: enabled
+- name: oversampling
+  id: variable
+  parameters:
+    comment: ''
+    value: '4'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [600, 16]
+    rotation: 0
+    state: enabled
+- name: rx_bandwidth
+  id: variable
+  parameters:
+    comment: ''
+    value: '48000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [208, 72]
+    rotation: 0
+    state: enabled
+- name: rx_lpf_cutoff
+  id: variable
+  parameters:
+    comment: ''
+    value: '24000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [304, 144]
+    rotation: 0
+    state: enabled
+- name: rx_lpf_width
+  id: variable
+  parameters:
+    comment: ''
+    value: '16384'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [208, 144]
+    rotation: 0
+    state: enabled
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: output_rate*oversampling
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [208, 12]
+    rotation: 0
+    state: enabled
+- name: tx_attenuation
+  id: variable
+  parameters:
+    comment: ''
+    value: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [504, 80]
+    rotation: 0
+    state: enabled
+- name: tx_bandwidth
+  id: variable
+  parameters:
+    comment: ''
+    value: '48000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [608, 80]
+    rotation: 0
+    state: enabled
+- name: tx_lpf_cutoff
+  id: variable
+  parameters:
+    comment: ''
+    value: '24000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [504, 144]
+    rotation: 0
+    state: enabled
+- name: tx_lpf_gain
+  id: variable
+  parameters:
+    comment: ''
+    value: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [600, 144]
+    rotation: 0
+    state: enabled
+- name: tx_lpf_width
+  id: variable
+  parameters:
+    comment: ''
+    value: '16384'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [408, 144]
+    rotation: 0
+    state: enabled
+- name: blocks_complex_to_float_0
+  id: blocks_complex_to_float
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [472, 272.0]
+    rotation: 0
+    state: enabled
+- name: blocks_deinterleave_0
+  id: blocks_deinterleave
+  parameters:
+    affinity: ''
+    alias: ''
+    blocksize: '1'
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_streams: '2'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [248, 472.0]
+    rotation: 0
+    state: enabled
+- name: blocks_float_to_complex_0
+  id: blocks_float_to_complex
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [400, 472.0]
+    rotation: 0
+    state: enabled
+- name: blocks_interleave_0
+  id: blocks_interleave
+  parameters:
+    affinity: ''
+    alias: ''
+    blocksize: '1'
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_streams: '2'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [656, 272.0]
+    rotation: 0
+    state: true
+- name: iio_fmcomms2_sink_0
+  id: iio_fmcomms2_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    attenuation1: tx_attenuation
+    attenuation2: tx_attenuation
+    bandwidth: '20000000'
+    buffer_size: '32768'
+    comment: ''
+    cyclic: 'False'
+    filter: ''
+    filter_source: '''Auto'''
+    fpass: '0'
+    frequency: frequency
+    fstop: '0'
+    len_tag_key: ''
+    rf_port_select: '''A'''
+    samplerate: samp_rate
+    tx1_en: 'True'
+    tx2_en: 'False'
+    type: fc32
+    uri: ip:192.168.2.1
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [784, 404.0]
+    rotation: 0
+    state: enabled
+- name: iio_fmcomms2_source_0
+  id: iio_fmcomms2_source
+  parameters:
+    affinity: ''
+    alias: ''
+    bandwidth: '20000000'
+    bbdc: 'True'
+    buffer_size: '32768'
+    comment: ''
+    filter: ''
+    filter_source: '''Auto'''
+    fpass: '0'
+    frequency: frequency
+    fstop: '0'
+    gain1: '''manual'''
+    gain2: '''manual'''
+    len_tag_key: packet_len
+    manual_gain1: gain
+    manual_gain2: '64'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    quadrature: 'True'
+    rf_port_select: '''A_BALANCED'''
+    rfdc: 'True'
+    rx1_en: 'True'
+    rx2_en: 'False'
+    samplerate: samp_rate
+    type: fc32
+    uri: ip:192.168.2.1
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [24, 168.0]
+    rotation: 0
+    state: true
+- name: low_pass_filter_0_0
+  id: low_pass_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    beta: '6.76'
+    comment: ''
+    cutoff_freq: rx_lpf_cutoff
+    decim: int(samp_rate/output_rate)
+    gain: '1'
+    interp: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate
+    type: fir_filter_ccf
+    width: rx_lpf_width
+    win: window.WIN_BLACKMAN
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [256, 228.0]
+    rotation: 0
+    state: enabled
+- name: low_pass_filter_0_0_0_0_1
+  id: low_pass_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    beta: '6.76'
+    comment: ''
+    cutoff_freq: tx_lpf_cutoff
+    decim: '1'
+    gain: tx_lpf_gain
+    interp: int(samp_rate/output_rate)
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate
+    type: interp_fir_filter_ccf
+    width: tx_lpf_width
+    win: window.WIN_BLACKMAN
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [576, 428.0]
+    rotation: 0
+    state: enabled
+- name: network_udp_sink_0
+  id: network_udp_sink
+  parameters:
+    addr: 127.0.0.1
+    affinity: ''
+    alias: ''
+    comment: ''
+    header: '0'
+    payloadsize: '8192'
+    port: '17001'
+    send_eof: 'False'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [784, 248.0]
+    rotation: 0
+    state: true
+- name: network_udp_source_0
+  id: network_udp_source
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    header: '0'
+    ipv6: 'False'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    notify_missed: 'False'
+    payloadsize: '8192'
+    port: '17005'
+    src_zeros: 'True'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [48, 448.0]
+    rotation: 0
+    state: enabled
+- name: xmlrpc_server_0
+  id: xmlrpc_server
+  parameters:
+    addr: localhost
+    alias: ''
+    comment: ''
+    port: '19004'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [720, 12.0]
+    rotation: 0
+    state: true
+
+connections:
+- [blocks_complex_to_float_0, '0', blocks_interleave_0, '0']
+- [blocks_complex_to_float_0, '1', blocks_interleave_0, '1']
+- [blocks_deinterleave_0, '0', blocks_float_to_complex_0, '0']
+- [blocks_deinterleave_0, '1', blocks_float_to_complex_0, '1']
+- [blocks_float_to_complex_0, '0', low_pass_filter_0_0_0_0_1, '0']
+- [blocks_interleave_0, '0', network_udp_sink_0, '0']
+- [iio_fmcomms2_source_0, '0', low_pass_filter_0_0, '0']
+- [low_pass_filter_0_0, '0', blocks_complex_to_float_0, '0']
+- [low_pass_filter_0_0_0_0_1, '0', iio_fmcomms2_sink_0, '0']
+- [network_udp_source_0, '0', blocks_deinterleave_0, '0']
+
+metadata:
+  file_format: 1
+  grc_version: 3.10.9.2
