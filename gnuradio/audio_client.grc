@@ -1,0 +1,134 @@
+options:
+  parameters:
+    author: glen
+    catch_exceptions: 'True'
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: no_gui
+    hier_block_src_path: '.:'
+    id: audio_client
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: run
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: Audio output to network
+    window_size: (1000,1000)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '48000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [232, 20.0]
+    rotation: 0
+    state: enabled
+- name: audio_sink_0
+  id: audio_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    device_name: gr_sink
+    num_inputs: '1'
+    ok_to_block: 'True'
+    samp_rate: samp_rate
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [504, 248.0]
+    rotation: 0
+    state: true
+- name: audio_source_0
+  id: audio_source
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    device_name: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_outputs: '1'
+    ok_to_block: 'True'
+    samp_rate: samp_rate
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [288, 112.0]
+    rotation: 0
+    state: true
+- name: network_udp_sink_0
+  id: network_udp_sink
+  parameters:
+    addr: thebe.local
+    affinity: ''
+    alias: ''
+    comment: ''
+    header: '0'
+    payloadsize: '1472'
+    port: '20000'
+    send_eof: 'False'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [488, 80.0]
+    rotation: 0
+    state: true
+- name: network_udp_source_0
+  id: network_udp_source
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    header: '0'
+    ipv6: 'False'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    notify_missed: 'True'
+    payloadsize: '1472'
+    port: '20000'
+    src_zeros: 'False'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [264, 224.0]
+    rotation: 0
+    state: true
+
+connections:
+- [audio_source_0, '0', network_udp_sink_0, '0']
+- [network_udp_source_0, '0', audio_sink_0, '0']
+
+metadata:
+  file_format: 1
+  grc_version: 3.10.9.2
